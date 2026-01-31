@@ -1,24 +1,5 @@
 const { test, expect } = require('@playwright/test');
 
-test('Thanglish to Tamil basic conversion', async ({ page }) => {
-  await page.goto('https://tamil.changathi.com/');
-
-  // find textarea/input
-  const inputBox = page.locator('textarea').first();
-
-  await inputBox.fill('naan veetukku poren');
-
-  // wait a bit for real-time conversion
-  await page.waitForTimeout(1500);
-
-  // get page content
-  const content = await page.content();
-
-  // check Tamil word appears somewhere
-  await expect(content).toContain('நான்');
-});
-const { test, expect } = require('@playwright/test');
-
 const URL = 'https://tamil.changathi.com/';
 
 // helper to get first textarea
@@ -135,16 +116,9 @@ test('Neg_UI_clear_input', async ({ page }) => {
   // page should still be stable
   await expect(content.length).toBeGreaterThan(0);
 });
-const { test, expect } = require('@playwright/test');
-
-const URL = 'https://tamil.changathi.com/';
-
-async function getInput(page) {
-  return page.locator('textarea').first();
-}
 
 // -----------------------------
-//  POSITIVE TEST INPUT SET (24)
+//  POSITIVE TEST INPUT SET 
 // -----------------------------
 const positiveInputs = [
   'naan veetukku poren',
@@ -175,7 +149,7 @@ nee enga pora?`,
 ];
 
 // -----------------------------
-//  NEGATIVE TEST INPUT SET (10)
+//  NEGATIVE TEST INPUT SET 
 // -----------------------------
 const negativeInputs = [
   'naaaan veetukku pooooren',
